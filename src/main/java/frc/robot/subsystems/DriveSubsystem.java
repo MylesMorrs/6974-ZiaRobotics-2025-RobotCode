@@ -8,7 +8,6 @@ import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.config.PIDConstants;
 import com.pathplanner.lib.config.RobotConfig;
 import com.pathplanner.lib.controllers.PPHolonomicDriveController;
-import com.pathplanner.lib.controllers.PPLTVController;
 
 import edu.wpi.first.hal.FRCNetComm.tInstances;
 import edu.wpi.first.hal.FRCNetComm.tResourceType;
@@ -85,7 +84,7 @@ public class DriveSubsystem extends SubsystemBase {
             new PPHolonomicDriveController( 
             new PIDConstants(5.0, 0.0, 0.0), // Translation PID constants
             new PIDConstants(5.0, 0.0, 0.0) // Rotation PID constants
-            )
+            ),
             config, // The robot configuration
             () -> {
               // Boolean supplier that controls when the path will be mirrored for the red alliance
@@ -156,7 +155,7 @@ public class DriveSubsystem extends SubsystemBase {
   }
 
   private void driveRobotRelative (ChassisSpeeds _chassisSpeeds) {
-    var swerveModuleStates = Drive.kDriveKinematics.toSwerveModuleStates(_chassisSpeeds);
+    var swerveModuleStates = DriveConstants.kDriveKinematics.toSwerveModuleStates(_chassisSpeeds);
     setModuleStates(swerveModuleStates);
   }
 
