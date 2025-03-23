@@ -4,7 +4,7 @@
 
 package frc.robot;
 
-
+import com.pathplanner.lib.auto.AutoBuilder;
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.controller.ProfiledPIDController;
@@ -57,6 +57,7 @@ public class RobotContainer {
   public RobotContainer() {
     if(m_driverController.getRawButton(4)){
         driveToggle = !driveToggle;
+    }
     // Build an auto chooser. This will use Commands.none() as the default option.
     autoChooser = AutoBuilder.buildAutoChooser();
 
@@ -64,7 +65,6 @@ public class RobotContainer {
     // autoChooser = AutoBuilder.buildAutoChooser("My Default Auto");
 
     SmartDashboard.putData("Auto Chooser", autoChooser);
-    }
     
     //algaeSubsystem.setAlgaeIntakeRotationMotorSpeed(m_manipulatorController.getRightY());
     // Configure the button bindings
