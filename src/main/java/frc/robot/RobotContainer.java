@@ -5,6 +5,8 @@
 package frc.robot;
 
 import com.pathplanner.lib.auto.AutoBuilder;
+import com.pathplanner.lib.commands.PathPlannerAuto;
+
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.controller.ProfiledPIDController;
@@ -132,7 +134,7 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
 
-    return autoChooser.getSelected();
+    return new PathPlannerAuto("New Auto");
     // Create config for trajectory
     /*TrajectoryConfig config = new TrajectoryConfig(
         AutoConstants.kMaxSpeedMetersPerSecond,

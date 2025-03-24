@@ -157,26 +157,20 @@ public class Robot extends TimedRobot {
       algaeSubsystem.setAlgaeIntakeRotationMotorSpeed(0.1);
     }
     if (m_joystick.getRawButton(3)) {
-        // Moves Coral Intake Articulator
-        coralSubsystem.moveToAngle(45);
+      //Coral Station
+      coralSubsystem.ElevatorPreset(4);
       }
     if (m_joystick.getPOV() == 0) {
       // First Layer on Reef (Not trough)
-       // coralSubsystem.moveElevatorInches(0);
-        // Moves Coral Intake Articulator
-        coralSubsystem.moveToAngle(45);
+
       }
     if (m_joystick.getPOV() == 90) {
       // Second Layer on Reef
-       // coralSubsystem.moveElevatorInches(0);
-        // Moves Coral Intake Articulator
-        coralSubsystem.moveToAngle(45);
+  
       }
     if (m_joystick.getPOV() == 270) {
       // Third Layer on Reef
-        //coralSubsystem.moveElevatorInches(0);
-        // Moves Coral Intake Articulator
-        coralSubsystem.moveToAngle(45);
+
       }
     coralSubsystem.setCoralElevatorMotorSpeed(m_joystick.getRawAxis(Axis.kLeftY.value)-0.1);
     coralSubsystem.setCoralIntakeArticulatorMotorSpeed(m_joystick.getRawAxis(Axis.kRightY.value));
