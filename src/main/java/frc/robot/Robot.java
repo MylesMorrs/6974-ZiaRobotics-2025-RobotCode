@@ -4,6 +4,8 @@
 
 package frc.robot;
 
+import com.pathplanner.lib.auto.AutoBuilder;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.XboxController;
@@ -47,6 +49,7 @@ public class Robot extends TimedRobot {
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
     m_joystick = new Joystick(OIConstants.kManipulatorControllerPort);
+    //AutoBuilder.configure();
   }
 
   /**
@@ -83,7 +86,7 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     m_autonomousCommand = m_robotContainer.getAutonomousCommand();
-    
+    registercommands();
      /*  String autoSelected = SmartDashboard.getString("Auto Selector",
       "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
       = new MyAutoCommand(); break; case "Default Auto": default:
@@ -158,21 +161,24 @@ public class Robot extends TimedRobot {
     }
     if (m_joystick.getRawButton(3)) {
       //Coral Station
-      coralSubsystem.ElevatorPreset(4);
+      coralSubsystem.ElevatorPreset(12);
       }
     if (m_joystick.getPOV() == 0) {
       // First Layer on Reef (Not trough)
+      coralSubsystem.ElevatorPreset(24);
 
       }
     if (m_joystick.getPOV() == 90) {
       // Second Layer on Reef
+      coralSubsystem.ElevatorPreset(36);
   
       }
     if (m_joystick.getPOV() == 270) {
       // Third Layer on Reef
+      coralSubsystem.ElevatorPreset(48);
 
       }
-    coralSubsystem.setCoralElevatorMotorSpeed(m_joystick.getRawAxis(Axis.kLeftY.value)-0.1);
+    //coralSubsystem.setCoralElevatorMotorSpeed(m_joystick.getRawAxis(Axis.kLeftY.value)-0.1);
     coralSubsystem.setCoralIntakeArticulatorMotorSpeed(m_joystick.getRawAxis(Axis.kRightY.value));
 
     if (m_driverController.getRawButton(5)){

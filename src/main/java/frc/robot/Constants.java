@@ -61,7 +61,7 @@ public final class Constants {
     //CoralIntake
     public static final int CoralElevatorCanId = 3; // Replace with correct Can ID
     public static final int CoralIntakeCanId = 4;
-    public static final int CoralIntake2CanId = 0; // Replace with correct Can ID 
+    public static final int CoralIntake2CanId = 19; // Replace with correct Can ID 
     public static final int CoralIntakeArticulatorCanId = 5;
     //Climber
     public static final int ClimberCanId = 6;

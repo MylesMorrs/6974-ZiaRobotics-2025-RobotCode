@@ -42,16 +42,16 @@ public class CoralSubsystem extends SubsystemBase {
         double currentPosition = m_elevatorEncoder.getPosition();
         String message = "Current Position is" + currentPosition;
          DriverStation.reportWarning(message, false);
-    
+        
         // Reset the encoder so we start from the current position
-       /* if (currentPosition < 1) {
+        if (currentPosition < -rotationsRequired - 0.1) {
             CoralElevatorMotor.set(0.3); // Set motor speed to 50% (adjust as needed)
-        } else if(currentPosition > 1) {
+        } else if(currentPosition > -rotationsRequired + 0.1) {
             CoralElevatorMotor.set(-0.3);
         }
         else {
-            CoralElevatorMotor.set(0); // Stop the motor when the target is reached
-        } */
+            CoralElevatorMotor.set(-0.1); // Stop the motor when the target is reached
+        } 
     }
 
 
@@ -60,6 +60,8 @@ public class CoralSubsystem extends SubsystemBase {
         speed = Math.max(-0.3, Math.min(0.3, -speed));
         CoralElevatorMotor.set(-speed);
     }
+    public static Command coralIntakeSpeedCommand(speed){ 
+        CoralIntakeMotor.set(speed); CoralIntakeMotor2.set(speed); }
 
     public void setCoralIntakeArticulatorMotorSpeed(double speed) {
         speed = Math.max(-0.2, Math.min(0.2, -speed));
@@ -71,6 +73,7 @@ public class CoralSubsystem extends SubsystemBase {
         CoralIntakeMotor.set(speed);
         CoralIntakeMotor2.set(speed);
     }
+
 
     // Example of stopping both motors
     public void stopMotors() {
