@@ -4,7 +4,7 @@
 
 package frc.robot;
 
-import com.pathplanner.lib.auto.AutoBuilder;
+//import com.pathplanner.lib.auto.AutoBuilder;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -18,7 +18,6 @@ import frc.robot.Constants.OIConstants;
 import frc.robot.subsystems.AlgaeSubsystem;
 import frc.robot.subsystems.ClimbingSubsystem;
 import frc.robot.subsystems.CoralSubsystem;
-import frc.robot.subsystems.DriveSubsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -49,6 +48,7 @@ public class Robot extends TimedRobot {
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
     m_joystick = new Joystick(OIConstants.kManipulatorControllerPort);
+    
     //AutoBuilder.configure();
   }
 
@@ -86,7 +86,7 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     m_autonomousCommand = m_robotContainer.getAutonomousCommand();
-    registercommands();
+    
      /*  String autoSelected = SmartDashboard.getString("Auto Selector",
       "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
       = new MyAutoCommand(); break; case "Default Auto": default:
@@ -159,10 +159,11 @@ public class Robot extends TimedRobot {
     else {
       algaeSubsystem.setAlgaeIntakeRotationMotorSpeed(0.1);
     }
-    if (m_joystick.getRawButton(3)) {
+    if (m_joystick.getPOV() == 180) {
       //Coral Station
+      coralSubsystem.CoralAnglePreset(90);
       coralSubsystem.ElevatorPreset(12);
-      }
+    }
     if (m_joystick.getPOV() == 0) {
       // First Layer on Reef (Not trough)
       coralSubsystem.ElevatorPreset(24);
@@ -178,7 +179,7 @@ public class Robot extends TimedRobot {
       coralSubsystem.ElevatorPreset(48);
 
       }
-    //coralSubsystem.setCoralElevatorMotorSpeed(m_joystick.getRawAxis(Axis.kLeftY.value)-0.1);
+    coralSubsystem.setCoralElevatorMotorSpeed(m_joystick.getRawAxis(Axis.kLeftY.value)-0.1);
     coralSubsystem.setCoralIntakeArticulatorMotorSpeed(m_joystick.getRawAxis(Axis.kRightY.value));
 
     if (m_driverController.getRawButton(5)){
