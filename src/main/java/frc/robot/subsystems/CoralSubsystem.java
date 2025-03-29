@@ -6,7 +6,7 @@ import com.revrobotics.spark.SparkLowLevel.MotorType;  // Import MotorType for s
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
-import edu.wpi.first.wpilibj2.command.SubsystemBase
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import com.revrobotics.RelativeEncoder;
 
 public class CoralSubsystem extends SubsystemBase {
