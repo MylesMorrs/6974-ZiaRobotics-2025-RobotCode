@@ -33,9 +33,10 @@ public class Robot extends TimedRobot {
 
   private RobotContainer m_robotContainer;
   private final AlgaeSubsystem algaeSubsystem = new AlgaeSubsystem(7, 8);
-  private final CoralSubsystem coralSubsystem = new CoralSubsystem(3, 4, 5, 0 );
+  private final CoralSubsystem coralSubsystem = new CoralSubsystem(3, 4, 5, 19 );
   private final ClimbingSubsystem climbingSubsystem = new ClimbingSubsystem(6);
   //private final DriveSubsystem m_robotDrive = new DriveSubsystem();
+  
 
   boolean auto = false;
   /**
@@ -61,6 +62,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+    
     // Runs the Scheduler.  This is responsible for polling buttons, adding newly-scheduled
     // commands, running already-scheduled commands, removing finished or interrupted commands,
     // and running subsystem periodic() methods.  This must be called from the robot's periodic
@@ -159,24 +161,31 @@ public class Robot extends TimedRobot {
     else {
       algaeSubsystem.setAlgaeIntakeRotationMotorSpeed(0.1);
     }
-    if (m_joystick.getPOV() == 180) {
+    if (m_joystick.getPOV() == 270) {
       //Coral Station
-      coralSubsystem.CoralAnglePreset(90);
-      coralSubsystem.ElevatorPreset(12);
+      coralSubsystem.CoralAnglePreset(60);
+      coralSubsystem.ElevatorPreset(10.8);
     }
-    if (m_joystick.getPOV() == 0) {
+    if (m_joystick.getPOV() == 180) {
       // First Layer on Reef (Not trough)
-      coralSubsystem.ElevatorPreset(24);
+      coralSubsystem.CoralAnglePreset(110);
+      coralSubsystem.ElevatorPreset(12);
+      
 
       }
     if (m_joystick.getPOV() == 90) {
       // Second Layer on Reef
-      coralSubsystem.ElevatorPreset(36);
+      coralSubsystem.CoralAnglePreset(110);
+      coralSubsystem.ElevatorPreset(48);
+      ;
   
       }
-    if (m_joystick.getPOV() == 270) {
+    if (m_joystick.getPOV() == 0) {
       // Third Layer on Reef
-      coralSubsystem.ElevatorPreset(48);
+      coralSubsystem.CoralAnglePreset(85);
+      coralSubsystem.ElevatorPreset(84);
+      
+
 
       }
     coralSubsystem.setCoralElevatorMotorSpeed(m_joystick.getRawAxis(Axis.kLeftY.value)-0.1);

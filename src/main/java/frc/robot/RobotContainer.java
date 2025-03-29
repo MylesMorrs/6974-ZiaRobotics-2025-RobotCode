@@ -66,6 +66,8 @@ public class RobotContainer {
     autoChooser = AutoBuilder.buildAutoChooser();
     NamedCommands.registerCommand("Arm Up", CoralSubsystem.coralElevatorHeightCommand());
     NamedCommands.registerCommand("Coral Angle", CoralSubsystem.coralIntakeArticulatorAngleCommand());
+    NamedCommands.registerCommand("Coral Intake", CoralSubsystem.coralIntakeSensingCommand());
+    NamedCommands.registerCommand("Arm Up L2", CoralSubsystem.coralElevatorHeightL2Command());
     
     // Another option that allows you to specify the default auto by its name
     // autoChooser = AutoBuilder.buildAutoChooser("My Default Auto");
@@ -88,12 +90,7 @@ public class RobotContainer {
                 -MathUtil.applyDeadband(m_driverController.getRightX()*(1-(m_driverController.getRightTriggerAxis()*0.6)), OIConstants.kDriveDeadband),
                 driveToggle),
             m_robotDrive));
-    if (m_driverController.getPOV() == 270){
-        m_robotDrive.zeroHeading();
-    }
-    if (m_driverController.getRightTriggerAxis() > 0) {
-        m_robotDrive.setX();
-    }
+    
   }
 
   //public AlgaeSubsystem getAlgaeSubsystem() {
@@ -110,10 +107,12 @@ public class RobotContainer {
    * {@link JoystickButton}.
    */
   private void configureButtonBindings() {
-   /*  new JoystickButton(m_driverController, Button.kR1.value)
-        .whileTrue(new RunCommand(
-            () -> m_robotDrive.setX(),
-            m_robotDrive)); */
+    if (m_driverController.getPOV() == 270){
+        m_robotDrive.zeroHeading();
+    }
+    if (m_driverController.getRightTriggerAxis() > 0) {
+        m_robotDrive.setX();
+    }
     
    /*  new JoystickButton(m_driverController, Button.kTriangle.value)
         .whileTrue(new RunCommand(
@@ -138,7 +137,7 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
 
-    return new PathPlannerAuto("New Auto");
+    return new PathPlannerAuto("BlueRightL2");
     // Create config for trajectory
     /*TrajectoryConfig config = new TrajectoryConfig(
         AutoConstants.kMaxSpeedMetersPerSecond,

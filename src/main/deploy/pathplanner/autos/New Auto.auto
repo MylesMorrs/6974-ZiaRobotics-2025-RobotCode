@@ -41,6 +41,12 @@
           "data": {
             "name": "Arm Up"
           }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Coral Intake"
+          }
         }
       ]
     }
