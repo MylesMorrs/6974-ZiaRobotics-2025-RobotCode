@@ -64,10 +64,10 @@ public class RobotContainer {
     }
     // Build an auto chooser. This will use Commands.none() as the default option.
     autoChooser = AutoBuilder.buildAutoChooser();
-    NamedCommands.registerCommand("Arm Up", CoralSubsystem.coralElevatorHeightCommand());
+    //NamedCommands.registerCommand("Arm Up", CoralSubsystem.coralElevatorHeightCommand());
     NamedCommands.registerCommand("Coral Angle", CoralSubsystem.coralIntakeArticulatorAngleCommand());
     NamedCommands.registerCommand("Coral Intake", CoralSubsystem.coralIntakeSensingCommand());
-    NamedCommands.registerCommand("Arm Up L2", CoralSubsystem.coralElevatorHeightL2Command());
+    //NamedCommands.registerCommand("Arm Up L2", CoralSubsystem.coralElevatorHeightL2Command());
     
     // Another option that allows you to specify the default auto by its name
     // autoChooser = AutoBuilder.buildAutoChooser("My Default Auto");
@@ -137,7 +137,7 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
 
-    return new PathPlannerAuto("BlueRightL2");
+    return new PathPlannerAuto("L3 CoralScoring");
     // Create config for trajectory
     /*TrajectoryConfig config = new TrajectoryConfig(
         AutoConstants.kMaxSpeedMetersPerSecond,

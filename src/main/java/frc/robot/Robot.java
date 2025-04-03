@@ -152,37 +152,37 @@ public class Robot extends TimedRobot {
     }
     if (m_joystick.getRawButton(4)) {
       // left trigger is pressed outtake
-        algaeSubsystem.setAlgaeIntakeRotationMotorSpeed(0.4);
+        algaeSubsystem.setAlgaeIntakeRotationMotorSpeed(0.6);
       }
     else if (m_joystick.getRawButton(1)) {
         // Button 5 is pressed intake
-          algaeSubsystem.setAlgaeIntakeRotationMotorSpeed(-0.4);
+          algaeSubsystem.setAlgaeIntakeRotationMotorSpeed(-0.6);
         } 
     else {
-      algaeSubsystem.setAlgaeIntakeRotationMotorSpeed(0.1);
+      algaeSubsystem.setAlgaeIntakeRotationMotorSpeed(0);
     }
     if (m_joystick.getPOV() == 270) {
       //Coral Station
-      coralSubsystem.CoralAnglePreset(60);
+      //coralSubsystem.CoralAnglePreset(50);
       coralSubsystem.ElevatorPreset(10.8);
     }
     if (m_joystick.getPOV() == 180) {
       // First Layer on Reef (Not trough)
-      coralSubsystem.CoralAnglePreset(110);
-      coralSubsystem.ElevatorPreset(12);
+      //coralSubsystem.CoralAnglePreset(110);
+      coralSubsystem.ElevatorPreset(14);
       
 
       }
     if (m_joystick.getPOV() == 90) {
       // Second Layer on Reef
-      coralSubsystem.CoralAnglePreset(110);
-      coralSubsystem.ElevatorPreset(48);
+      //coralSubsystem.CoralAnglePreset(110);
+      coralSubsystem.ElevatorPreset(55);
       ;
   
       }
     if (m_joystick.getPOV() == 0) {
       // Third Layer on Reef
-      coralSubsystem.CoralAnglePreset(85);
+      //coralSubsystem.CoralAnglePreset(85);
       coralSubsystem.ElevatorPreset(84);
       
 
